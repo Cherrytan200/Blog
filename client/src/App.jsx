@@ -5,11 +5,12 @@ import Signup from './pages/Signup'
 import DashBoard from './pages/dashBoard'
 import Project from './pages/Project'
 import About from './pages/About'
-
+import Header from './components/Header'
 
 export default function App() {
   return (
     <BrowserRouter>
+    <Header/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/dashboard" element={<DashBoard/>}/>
