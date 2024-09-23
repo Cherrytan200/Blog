@@ -7,13 +7,17 @@ import Project from './pages/Project'
 import About from './pages/About'
 import Header from './components/Header'
 import Footer from './components/footer'
+import PrivateRoute from './components/PrivateRoute'
+
 export default function App() {
   return (
     <BrowserRouter>
     <Header/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/dashboard" element={<DashBoard/>}/>
+        <Route element={<PrivateRoute/>}>
+          <Route path="/dashboard" element={<DashBoard/>}/>
+        </Route>
         <Route path="/projects" element={<Project/>}/>
         <Route path="/sign-in" element={<Signin/>}/>
         <Route path="/sign-up" element={<Signup/>}/>
