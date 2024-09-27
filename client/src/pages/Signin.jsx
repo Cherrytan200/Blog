@@ -26,9 +26,10 @@ export default function SignIn() {
       dispatch(signInStart());
       const res=await fetch('/api/auth/signin',{
         method:'POST',
-        headers:{'content-Type':'application/json'},
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify(formData),
       });
+      console.log(res);
       const data=await res.json();
       if(data.success===false){
         dispatch(signInFailure(data.message));

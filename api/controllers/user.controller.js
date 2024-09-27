@@ -1,7 +1,7 @@
-import User from "../models/user.model";
-import { errorHandler } from "../utilis/error";
+import User from "../models/user.model.js";
+import { errorHandler } from "../utilis/error.js";
 import  bcryptjs from 'bcryptjs'
-import User from "../models/user.model";
+// import User from "../models/user.model";
 
 
 export const test=(req,res)=>{
@@ -31,6 +31,7 @@ export const updateUser=async (req,res,next)=>{
     if(!req.body.username.match(/^[a-zA-Z0-9]+$/)){
         return next(errorHandler(400,'Username can only contain letters and numbers'));
     }
+}
     try{
         const updateUser=await User.findByIdAndUpdate(req.params.userId,{
             $set:{
@@ -40,7 +41,7 @@ export const updateUser=async (req,res,next)=>{
                 password:req.body.password
             }
         },{new:true});
-        const {password,...rest}=updatedUser._doc;
+        const {password,...rest}=updateUser._doc;
         res.status(200).json(rest);
 
     }catch(error){
@@ -48,4 +49,3 @@ export const updateUser=async (req,res,next)=>{
     }
   }
 
-}
